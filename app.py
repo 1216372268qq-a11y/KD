@@ -167,19 +167,53 @@ shap_value_display = shap.Explanation(
     feature_names=input_df_display.columns
 )
 
-# -------- Plot with layout optimization --------
-fig, ax = plt.subplots(figsize=(9, 6.5))
+# -------- SHAP Waterfall Plot --------
+st.subheader("Individualized Model Explanation (SHAP Waterfall Plot)")
 
+explainer = shap.TreeExplainer(model)
+shap_value = explainer(input_df)
+
+# Display-friendly feature names
+FEATURE_NAME_MAP = {
+    "Age": "Age at diagnosis (months)",
+    "BMI": "Body mass index (kg/m²)",
+    "IVIG_resistance": "IVIG resistance status",
+    "Classification_of_CAA": "CAA classification",
+    "PLT": "Platelet count (×10¹²/L)",
+    "ESR": "Erythrocyte sedimentation rate (mm/h)",
+    "PA": "Prealbumin (mg/L)",
+    "CST3mRNA": "CST3 mRNA (2⁻ΔΔCT)"
+}
+
+input_df_display = input_df.copy()
+input_df_display.columns = [
+    FEATURE_NAME_MAP[col] for col in input_df.columns
+]
+
+shap_value_display = shap.Explanation(
+    values=shap_value.values,
+    base_values=shap_value.base_values,
+    data=input_df_display.values,
+    feature_names=input_df_display.columns
+)
+
+# ---- Let SHAP create the figure ----
 shap.plots.waterfall(
     shap_value_display[0],
     show=False
 )
 
-# Reduce y-axis label font size
+# Get the current figure created by SHAP
+fig = plt.gcf()
+fig.set_size_inches(9, 6.5)
+
+ax = plt.gca()
+
+# Reduce font size to avoid overcrowding
 for label in ax.get_yticklabels():
     label.set_fontsize(10)
 
-# Add prediction text
+# Add predicted probability annotation
 ax.text(
     0.99, 0.02,
     f"Predicted probability = {pred_prob * 100:.2f}%",
@@ -191,7 +225,8 @@ ax.text(
 )
 
 plt.tight_layout(rect=[0, 0.02, 1, 0.98])
-st.pyplot(fig)
 
-st.success("Prediction completed successfully.")
+st.pyplot(fig)
+plt.close()
+
 
