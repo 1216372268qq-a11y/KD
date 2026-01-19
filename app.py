@@ -136,9 +136,30 @@ st.write(
 st.subheader("Individualized Model Explanation (SHAP Waterfall Plot)")
 
 # Load background data
-X_train = pd.read_csv(
-    "500variables8original2.CSV"
-).drop(columns=["CAA_regression"])
+explainer = shap.TreeExplainer(model)
+shap_value = explainer(input_df)
+
+FEATURE_NAME_MAP = {
+    "Age": "Age at diagnosis (months)",
+    "BMI": "Body mass index (kg/m²)",
+    "IVIG_resistance": "IVIG resistance status",
+    "Classification_of_CAA": "CAA classification",
+    "PLT": "Platelet count (×10¹²/L)",
+    "ESR": "Erythrocyte sedimentation rate (mm/h)",
+    "PA": "Prealbumin (mg/L)",
+    "CST3mRNA": "CST3 mRNA (2⁻ΔΔCT)"
+}
+
+input_df_display = input_df.copy()
+input_df_display.columns = [FEATURE_NAME_MAP[col] for col in input_df.columns]
+
+shap_value_display = shap.Explanation(
+    values=shap_value.values,
+    base_values=shap_value.base_values,
+    data=input_df_display.values,
+    feature_names=input_df_display.columns
+)
+
 
 explainer = shap.TreeExplainer(model)
 shap_value = explainer(input_df)
@@ -194,5 +215,6 @@ plt.tight_layout(rect=[0, 0.02, 1, 0.98])
 st.pyplot(fig)
 
 st.success("Prediction completed successfully.")
+
 
 
