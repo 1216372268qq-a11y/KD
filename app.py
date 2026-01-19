@@ -137,7 +137,7 @@ st.subheader("Individualized Model Explanation (SHAP Waterfall Plot)")
 
 # Load background data
 X_train = pd.read_csv(
-    "C:/Users/11859/PycharmProjects/500variables8original2.CSV"
+    "500variables8original2.CSV"
 ).drop(columns=["CAA_regression"])
 
 explainer = shap.TreeExplainer(model)
@@ -194,4 +194,5 @@ plt.tight_layout(rect=[0, 0.02, 1, 0.98])
 st.pyplot(fig)
 
 st.success("Prediction completed successfully.")
+
 
