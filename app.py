@@ -168,7 +168,7 @@ shap_value_display = shap.Explanation(
 )
 
 # -------- SHAP Waterfall Plot --------
-
+st.subheader("Individualized Model Explanation (SHAP Waterfall Plot)")
 explainer = shap.TreeExplainer(model)
 shap_value = explainer(input_df)
 
@@ -227,6 +227,7 @@ plt.tight_layout(rect=[0, 0.02, 1, 0.98])
 
 st.pyplot(fig)
 plt.close()
+
 
 
 
