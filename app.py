@@ -61,7 +61,7 @@ def user_input_features():
     )
 
     plt_count = st.sidebar.number_input(
-        "Platelet count (×10¹²/L)",
+        "Platelet count (×10⁹/L)",
         min_value=1,
         max_value=2000,
         value=350
@@ -215,6 +215,7 @@ plt.tight_layout(rect=[0, 0.02, 1, 0.98])
 st.pyplot(fig)
 
 st.success("Prediction completed successfully.")
+
 
 
 
