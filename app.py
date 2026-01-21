@@ -144,7 +144,7 @@ FEATURE_NAME_MAP = {
     "BMI": "Body mass index (kg/m²)",
     "IVIG_resistance": "IVIG resistance status",
     "Classification_of_CAA": "CAA classification",
-    "PLT": "Platelet count (×10¹²/L)",
+    "PLT": "Platelet count (×10⁹/L)",
     "ESR": "Erythrocyte sedimentation rate (mm/h)",
     "PA": "Prealbumin (mg/L)",
     "CST3mRNA": "CST3 mRNA (2⁻ΔΔCT)"
@@ -170,7 +170,7 @@ FEATURE_NAME_MAP = {
     "BMI": "Body mass index (kg/m²)",
     "IVIG_resistance": "IVIG resistance status",
     "Classification_of_CAA": "CAA classification",
-    "PLT": "Platelet count (×10¹²/L)",
+    "PLT": "Platelet count (×10⁹/L)",
     "ESR": "Erythrocyte sedimentation rate (mm/h)",
     "PA": "Prealbumin (mg/L)",
     "CST3mRNA": "CST3 mRNA (2^⁻ΔΔCT)"
@@ -215,6 +215,7 @@ plt.tight_layout(rect=[0, 0.02, 1, 0.98])
 st.pyplot(fig)
 
 st.success("Prediction completed successfully.")
+
 
 
 
