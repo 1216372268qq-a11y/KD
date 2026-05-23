@@ -43,7 +43,7 @@ def user_input_features():
         "Age at diagnosis (months)",
         min_value=0.0,
         max_value=240.0,
-        value=36.0
+        value=13.0
     )
 
     # Fever duration
@@ -79,7 +79,7 @@ def user_input_features():
         "White blood cell count (×10⁹/L)",
         min_value=0.0,
         max_value=100.0,
-        value=10.0
+        value=20.0
     )
 
     # Hb
@@ -87,7 +87,7 @@ def user_input_features():
         "Hemoglobin (g/L)",
         min_value=0.0,
         max_value=250.0,
-        value=120.0
+        value=101.0
     )
 
     # PLT
@@ -95,7 +95,7 @@ def user_input_features():
         "Platelet count (×10⁹/L)",
         min_value=0.0,
         max_value=2000.0,
-        value=350.0
+        value=650.0
     )
 
     # CRP
@@ -103,7 +103,7 @@ def user_input_features():
         "C-reactive protein (mg/L)",
         min_value=0.0,
         max_value=300.0,
-        value=30.0
+        value=35.0
     )
 
     # PA
@@ -111,7 +111,7 @@ def user_input_features():
         "Prealbumin (mg/L)",
         min_value=0.0,
         max_value=500.0,
-        value=130.0
+        value=103.0
     )
 
     # CST3
@@ -119,7 +119,7 @@ def user_input_features():
         "CST3 mRNA (2^⁻ΔΔCT)",
         min_value=0.0,
         max_value=20.0,
-        value=1.2
+        value=0.88
     )
 
     # Create dataframe
